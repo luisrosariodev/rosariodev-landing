@@ -4,7 +4,20 @@
     <meta charset="UTF-8" />
     <title>RosarioDev — Software · Automation · AI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="RosarioDev builds custom web apps, automation flows and AI-assisted tools for businesses that need practical, reliable systems."
+    />
+    <meta name="theme-color" content="#2d3250" />
+    <meta property="og:title" content="RosarioDev — Software · Automation · AI" />
+    <meta
+      property="og:description"
+      content="Custom software, automation and AI-assisted tools built around your real workflows."
+    />
+    <meta property="og:type" content="website" />
     <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -34,6 +47,10 @@
     </script>
 
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
       .float-soft {
         animation: floatSoft 9s ease-in-out infinite;
       }
@@ -55,6 +72,30 @@
 
       #mobile-menu { display: none; }
       #mobile-menu.open { display: block; }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid #f9b17a;
+        outline-offset: 2px;
+        border-radius: 9999px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .fade-up {
+          opacity: 1;
+          transform: none;
+        }
+      }
     </style>
   </head>
 
@@ -89,7 +130,13 @@
               Work with me
             </a>
             <!-- Hamburger (mobile only) -->
-            <button id="menu-btn" class="flex flex-col gap-1.5 p-1 md:hidden" aria-label="Toggle menu">
+            <button
+              id="menu-btn"
+              class="flex flex-col gap-1.5 p-1 md:hidden"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+              aria-label="Open menu"
+            >
               <span class="h-0.5 w-5 rounded bg-brand-white/80 transition-all"></span>
               <span class="h-0.5 w-5 rounded bg-brand-white/80 transition-all"></span>
               <span class="h-0.5 w-5 rounded bg-brand-white/80 transition-all"></span>
@@ -419,7 +466,7 @@
                   Booking platform built for personal trainers and their clients. Schedule sessions, manage payments, and keep everything in one frictionless flow — no spreadsheets, no back-and-forth.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <span class="rounded-full bg-brand-navyDeep/60 px-3 py-1 text-[11px] text-brand-white/70 ring-1 ring-brand-indigoSoft/40">Stripe & ATH Móvil</span>
+                  <span class="rounded-full bg-brand-navyDeep/60 px-3 py-1 text-[11px] text-brand-white/70 ring-1 ring-brand-indigoSoft/40">Stripe payments</span>
                   <span class="rounded-full bg-brand-navyDeep/60 px-3 py-1 text-[11px] text-brand-white/70 ring-1 ring-brand-indigoSoft/40">Real-time booking</span>
                   <span class="rounded-full bg-brand-navyDeep/60 px-3 py-1 text-[11px] text-brand-white/70 ring-1 ring-brand-indigoSoft/40">Trainer directory</span>
                   <span class="rounded-full bg-brand-navyDeep/60 px-3 py-1 text-[11px] text-brand-white/70 ring-1 ring-brand-indigoSoft/40">Client portal</span>
@@ -428,6 +475,7 @@
                   href="https://app.rosariodev.com"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Try Reservio (opens in a new tab)"
                   class="inline-flex items-center gap-2 rounded-full bg-brand-accent px-6 py-2.5 text-xs font-semibold text-brand-navyDeep shadow-soft hover:brightness-110 transition"
                 >
                   Try Reservio
@@ -448,7 +496,7 @@
                   </div>
                   <div class="flex items-start gap-3">
                     <span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-accent/20 text-[9px] text-brand-accent">✓</span>
-                    <p class="text-xs text-brand-white/75">Payments processed securely via Stripe and ATH Móvil</p>
+                    <p class="text-xs text-brand-white/75">Payments processed securely via Stripe</p>
                   </div>
                   <div class="flex items-start gap-3">
                     <span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-accent/20 text-[9px] text-brand-accent">✓</span>
@@ -472,14 +520,14 @@
               Tools & ecosystems RosarioDev plays well with
             </p>
             <div class="flex flex-wrap items-center gap-6 md:gap-10">
-              <img src="assets/logo-stripe.png"      alt="Stripe"      class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-supabase.jpeg"  alt="Supabase"    class="h-6 w-auto grayscale rounded opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-airtable.png"   alt="Airtable"    class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-n8n.png"        alt="n8n"         class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-make.jpeg"      alt="Make"        class="h-6 w-auto grayscale rounded opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-aws.png"        alt="AWS"         class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-powerapps.png"  alt="Power Apps"  class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-flutterflow.png" alt="FlutterFlow" class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
+              <img src="assets/logo-stripe.png"      alt="Stripe"      loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
+              <img src="assets/logo-supabase.jpeg"  alt="Supabase"    loading="lazy" decoding="async" class="h-6 w-auto grayscale rounded opacity-55 transition hover:grayscale-0 hover:opacity-100" />
+              <img src="assets/logo-airtable.png"   alt="Airtable"    loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
+              <img src="assets/logo-n8n.png"        alt="n8n"         loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
+              <img src="assets/logo-make.jpeg"      alt="Make"        loading="lazy" decoding="async" class="h-6 w-auto grayscale rounded opacity-55 transition hover:grayscale-0 hover:opacity-100" />
+              <img src="assets/logo-aws.png"        alt="AWS"         loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
+              <img src="assets/logo-powerapps.png"  alt="Power Apps"  loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
+              <img src="assets/logo-flutterflow.png" alt="FlutterFlow" loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
             </div>
           </div>
         </div>
@@ -507,21 +555,64 @@
 
             <div class="fade-up" style="transition-delay: 0.1s">
               <div class="rounded-3xl bg-brand-navyDeep p-6 shadow-card ring-1 ring-brand-indigoSoft/40">
-                <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-white/70">Quick contact</p>
-                <p class="mt-2 text-sm text-brand-white/80">You can start with something as simple as:</p>
-                <div class="mt-4 space-y-2 rounded-2xl bg-brand-navyMuted/60 p-4 text-[11px] text-brand-white/80">
-                  <p>"We currently manage our clients / bookings / projects in…"</p>
-                  <p>"The part that feels most chaotic is…"</p>
-                  <p>"Ideally, I'd love if the system could…"</p>
-                </div>
-                <a
-                  href="mailto:contact@rosariodev.com"
-                  class="mt-5 inline-flex w-full items-center justify-center rounded-full bg-brand-accent px-4 py-2.5 text-xs font-semibold text-brand-navyDeep shadow-soft hover:brightness-110 transition"
-                >
-                  Open email client
-                </a>
+                <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-white/70">Project request</p>
+                <p class="mt-2 text-sm text-brand-white/80">Share your brief and we'll reply with next steps.</p>
+                <form id="project-form" class="mt-4 space-y-3">
+                  <div>
+                    <label for="full-name" class="mb-1 block text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-white/65">Full name</label>
+                    <input
+                      id="full-name"
+                      name="fullName"
+                      type="text"
+                      required
+                      class="w-full rounded-xl border border-brand-indigoSoft/40 bg-brand-navyMuted/55 px-3 py-2 text-sm text-brand-white placeholder:text-brand-white/40 focus:border-brand-accent focus:outline-none"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label for="email" class="mb-1 block text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-white/65">Email</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      class="w-full rounded-xl border border-brand-indigoSoft/40 bg-brand-navyMuted/55 px-3 py-2 text-sm text-brand-white placeholder:text-brand-white/40 focus:border-brand-accent focus:outline-none"
+                      placeholder="you@company.com"
+                    />
+                  </div>
+                  <div>
+                    <label for="company" class="mb-1 block text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-white/65">Company (optional)</label>
+                    <input
+                      id="company"
+                      name="company"
+                      type="text"
+                      class="w-full rounded-xl border border-brand-indigoSoft/40 bg-brand-navyMuted/55 px-3 py-2 text-sm text-brand-white placeholder:text-brand-white/40 focus:border-brand-accent focus:outline-none"
+                      placeholder="Business name"
+                    />
+                  </div>
+                  <div>
+                    <label for="needs" class="mb-1 block text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-white/65">What do you need?</label>
+                    <textarea
+                      id="needs"
+                      name="needs"
+                      required
+                      rows="4"
+                      class="w-full resize-y rounded-xl border border-brand-indigoSoft/40 bg-brand-navyMuted/55 px-3 py-2 text-sm text-brand-white placeholder:text-brand-white/40 focus:border-brand-accent focus:outline-none"
+                      placeholder="Tell me about your process, pain points, and what outcome you want."
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    class="inline-flex w-full items-center justify-center rounded-full bg-brand-accent px-4 py-2.5 text-xs font-semibold text-brand-navyDeep shadow-soft hover:brightness-110 transition"
+                  >
+                    Send project request
+                  </button>
+                </form>
+                <p class="mt-2 text-[11px] text-brand-white/55">This form opens your email app and prepares a structured message.</p>
                 <a
                   href="https://wa.me/17872397182"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="mt-2 inline-flex w-full items-center justify-center rounded-full border border-brand-indigoSoft/70 px-4 py-2.5 text-xs font-semibold text-brand-white/85 hover:border-brand-accent hover:text-brand-accent transition"
                 >
                   Write on WhatsApp
@@ -547,12 +638,20 @@
       const mobileMenu = document.getElementById('mobile-menu');
 
       menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('open');
+        const isOpen = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', String(isOpen));
+        menuBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
       });
 
       function closeMenu() {
         mobileMenu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'Open menu');
       }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+      });
 
       // Scroll-triggered fade-up via IntersectionObserver
       const observer = new IntersectionObserver(
@@ -568,6 +667,25 @@
       );
 
       document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+      const projectForm = document.getElementById('project-form');
+      if (projectForm) {
+        projectForm.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          const fullName = document.getElementById('full-name').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const company = document.getElementById('company').value.trim();
+          const needs = document.getElementById('needs').value.trim();
+
+          const subject = encodeURIComponent(`Project request from ${fullName}`);
+          const body = encodeURIComponent(
+            `Name: ${fullName}\nEmail: ${email}\nCompany: ${company || 'N/A'}\n\nProject brief:\n${needs}`
+          );
+
+          window.location.href = `mailto:contact@rosariodev.com?subject=${subject}&body=${body}`;
+        });
+      }
     </script>
   </body>
 </html>
