@@ -23,9 +23,9 @@
               brand: {
                 white: "#ffffff",
                 black: "#000000",
-                blue: "#0b5884",
-                dark: "#111827",
-                gray: "#687280",
+                blue:  "#0b5884",
+                dark:  "#111827",
+                gray:  "#687280",
                 light: "#f5f6f7",
               },
             },
@@ -42,16 +42,12 @@
         transform: translateY(24px);
         transition: opacity 0.65s ease-out, transform 0.65s ease-out;
       }
-      .fade-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      .fade-up.visible { opacity: 1; transform: translateY(0); }
 
       #mobile-menu { display: none; }
       #mobile-menu.open { display: block; }
 
-      a:focus-visible,
-      button:focus-visible {
+      a:focus-visible, button:focus-visible {
         outline: 2px solid #0b5884;
         outline-offset: 2px;
         border-radius: 4px;
@@ -63,41 +59,30 @@
         .fade-up { opacity: 1; transform: none; }
       }
 
-      .float-slow  { animation: floatY 12s ease-in-out infinite; }
-      .float-slow-2 { animation: floatY 15s ease-in-out infinite reverse; }
-      .float-slow-3 { animation: floatY 10s ease-in-out infinite 3s; }
+      /* Float animations */
+      .float-a { animation: floatY 12s ease-in-out infinite; }
+      .float-b { animation: floatY 16s ease-in-out infinite reverse; }
+      .float-c { animation: floatY  9s ease-in-out infinite 2s; }
+      .float-d { animation: floatY 14s ease-in-out infinite 5s; }
       @keyframes floatY {
         0%, 100% { transform: translateY(0); }
         50%       { transform: translateY(-20px); }
       }
 
-      .shape-diamond {
-        width: 110px;
-        height: 110px;
-        border: 1.5px solid rgba(255,255,255,0.3);
-        transform: rotate(45deg);
-      }
-      .shape-square {
-        width: 80px;
-        height: 80px;
-        border: 1.5px solid rgba(255,255,255,0.25);
-      }
-      .shape-circle {
-        width: 90px;
-        height: 90px;
-        border: 1.5px solid rgba(255,255,255,0.22);
-        border-radius: 50%;
-      }
+      /* White-bg shapes (blue border) */
+      .sh-diamond-b { width:110px; height:110px; border:1.5px solid rgba(11,88,132,0.38); transform:rotate(45deg); }
+      .sh-square-b  { width: 80px; height: 80px; border:1.5px solid rgba(11,88,132,0.30); }
+      .sh-circle-b  { width: 90px; height: 90px; border:1.5px solid rgba(11,88,132,0.30); border-radius:50%; }
 
-      /* Solutions grid separator lines */
-      .solutions-grid > div + div {
-        border-left: 1px solid rgba(255,255,255,0.08);
-      }
-      @media (max-width: 767px) {
-        .solutions-grid > div + div {
-          border-left: none;
-          border-top: 1px solid rgba(255,255,255,0.08);
-        }
+      /* Dark/blue-bg shapes (white border) */
+      .sh-diamond-w { width:110px; height:110px; border:1.5px solid rgba(255,255,255,0.45); transform:rotate(45deg); }
+      .sh-square-w  { width: 80px; height: 80px; border:1.5px solid rgba(255,255,255,0.38); }
+      .sh-circle-w  { width: 90px; height: 90px; border:1.5px solid rgba(255,255,255,0.35); border-radius:50%; }
+
+      /* Solutions column separators */
+      .sol-col + .sol-col { border-left:1px solid rgba(255,255,255,0.08); }
+      @media (max-width:767px) {
+        .sol-col + .sol-col { border-left:none; border-top:1px solid rgba(255,255,255,0.08); }
       }
     </style>
   </head>
@@ -107,10 +92,7 @@
     <!-- ─── NAVBAR ─── -->
     <header class="sticky top-0 z-30 bg-white border-b border-gray-100">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8">
-
-        <a href="/">
-          <img src="assets/logo-rosariodev-horizontal.png" alt="RosarioDev" class="h-8 w-auto" />
-        </a>
+        <a href="/"><img src="assets/logo-rosariodev-horizontal.png" alt="RosarioDev" class="h-8 w-auto" /></a>
 
         <nav class="hidden items-center gap-8 text-sm text-brand-gray md:flex">
           <a href="#about"       class="hover:text-brand-black transition-colors">About</a>
@@ -150,42 +132,40 @@
 
     <!-- ─── HERO — blue ─── -->
     <section class="relative overflow-hidden bg-brand-blue">
-      <!-- Floating geometric marks -->
-      <div class="absolute top-10 left-8 float-slow opacity-30 pointer-events-none">
-        <div class="shape-diamond"></div>
+      <!-- Shapes: diamond top-left, square top-right, circle bottom-center, small diamond bottom-right -->
+      <!-- Hero: two diamonds -->
+      <div class="absolute top-10 left-8 float-a pointer-events-none">
+        <div class="sh-diamond-w"></div>
       </div>
-      <div class="absolute top-16 right-12 float-slow-2 opacity-20 pointer-events-none hidden md:block">
-        <div class="shape-square"></div>
-      </div>
-      <div class="absolute bottom-14 left-1/3 float-slow-3 opacity-15 pointer-events-none hidden md:block">
-        <div class="shape-circle"></div>
-      </div>
-      <div class="absolute bottom-8 right-6 float-slow opacity-10 pointer-events-none">
-        <div class="shape-diamond" style="width:56px;height:56px;"></div>
+      <div class="absolute bottom-10 right-12 float-d pointer-events-none">
+        <div class="sh-diamond-w" style="width:65px;height:65px;"></div>
       </div>
 
-      <div class="relative mx-auto max-w-6xl px-4 py-20 md:px-8 md:py-32">
+      <div class="relative mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
         <div class="max-w-3xl fade-up">
-          <p class="mb-6 inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-white/50">
-            <span class="h-px w-8 bg-white/40"></span>
+          <p class="mb-6 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-white" style="opacity:0.5">
+            <span class="h-px w-8 bg-white" style="opacity:0.5"></span>
             Software · Automation · AI
           </p>
-          <h1 class="text-4xl font-bold leading-[1.08] text-white md:text-6xl">
+          <h1 class="text-4xl font-bold leading-tight text-white md:text-6xl" style="line-height:1.08">
             Real software<br/>
             for the way your<br/>
             business works.
           </h1>
-          <p class="mt-6 max-w-xl text-base leading-relaxed text-white/65 md:text-lg">
+          <p class="mt-6 max-w-xl text-base leading-relaxed md:text-lg" style="color:rgba(255,255,255,0.65)">
             RosarioDev builds custom web apps, automation flows and AI-assisted tools.
             No templates, no unnecessary complexity — just systems that reduce friction.
           </p>
           <div class="mt-10 flex flex-wrap gap-4">
             <a href="#contact"
-               class="rounded-full bg-white px-7 py-3 text-sm font-bold text-brand-blue hover:bg-white/90 transition">
+               class="rounded-full bg-white px-7 py-3 text-sm font-bold text-brand-blue hover:opacity-90 transition">
               Book a discovery call
             </a>
             <a href="#solutions"
-               class="rounded-full border border-white/35 px-7 py-3 text-sm font-bold text-white hover:border-white/70 transition">
+               class="rounded-full px-7 py-3 text-sm font-bold text-white transition"
+               style="border:1.5px solid rgba(255,255,255,0.4)"
+               onmouseover="this.style.borderColor='rgba(255,255,255,0.8)'"
+               onmouseout="this.style.borderColor='rgba(255,255,255,0.4)'">
               Explore solutions
             </a>
           </div>
@@ -194,24 +174,32 @@
     </section>
 
     <!-- ─── ABOUT — white ─── -->
-    <section id="about" class="bg-white py-20 md:py-28">
-      <div class="mx-auto max-w-6xl px-4 md:px-8">
-        <div class="grid gap-14 md:grid-cols-2 md:items-center">
+    <section id="about" class="relative overflow-hidden bg-white py-16 md:py-24">
+      <!-- About: two circles -->
+      <div class="absolute top-10 right-10 float-b pointer-events-none">
+        <div class="sh-circle-b" style="width:100px;height:100px;"></div>
+      </div>
+      <div class="absolute bottom-10 right-36 float-c pointer-events-none">
+        <div class="sh-circle-b" style="width:60px;height:60px;"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-6xl px-4 md:px-8">
+        <div class="grid gap-12 md:grid-cols-2 md:items-center">
 
           <div class="fade-up">
-            <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.28em] text-brand-gray">About</p>
+            <p class="mb-5 text-xs font-bold uppercase tracking-widest text-brand-gray">About</p>
             <h2 class="text-3xl font-bold leading-tight text-brand-black md:text-5xl">
               A focused studio.<br/>Honest software.
             </h2>
           </div>
 
-          <div class="space-y-5 fade-up" style="transition-delay: 0.12s">
-            <p class="text-base leading-relaxed text-brand-gray md:text-[17px]">
+          <div class="space-y-5 fade-up" style="transition-delay:0.12s">
+            <p class="text-base leading-relaxed text-brand-gray md:text-lg">
               Instead of pushing you into a one-size-fits-all platform,
               RosarioDev studies how you actually operate — your tools, your
               constraints, your clients — and designs around that reality.
             </p>
-            <p class="text-base leading-relaxed text-brand-gray md:text-[17px]">
+            <p class="text-base leading-relaxed text-brand-gray md:text-lg">
               Every decision is driven by clarity: fewer tabs, fewer manual steps, more control.
             </p>
             <div class="flex gap-12 pt-4 border-t border-gray-100">
@@ -231,21 +219,27 @@
     </section>
 
     <!-- ─── SOLUTIONS — dark ─── -->
-    <section id="solutions" class="bg-brand-dark py-20 md:py-28">
-      <div class="mx-auto max-w-6xl px-4 md:px-8">
+    <section id="solutions" class="relative overflow-hidden bg-brand-dark py-16 md:py-24">
+      <!-- Solutions: two squares -->
+      <div class="absolute top-10 right-10 float-a pointer-events-none">
+        <div class="sh-square-w"></div>
+      </div>
+      <div class="absolute bottom-14 left-10 float-d pointer-events-none">
+        <div class="sh-square-w" style="width:50px;height:50px;"></div>
+      </div>
 
-        <div class="mb-14 fade-up">
-          <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.28em] text-brand-gray">Solutions</p>
+      <div class="relative mx-auto max-w-6xl px-4 md:px-8">
+        <div class="mb-12 fade-up">
+          <p class="mb-5 text-xs font-bold uppercase tracking-widest text-brand-gray">Solutions</p>
           <h2 class="max-w-2xl text-3xl font-bold leading-tight text-white md:text-5xl">
             From messy workflows to<br/>connected, reliable systems.
           </h2>
         </div>
 
-        <div class="solutions-grid grid md:grid-cols-3 fade-up" style="transition-delay: 0.1s">
-
-          <div class="py-8 pr-8">
+        <div class="grid md:grid-cols-3 fade-up" style="transition-delay:0.1s">
+          <div class="sol-col py-8 md:pr-8">
             <div class="mb-8 h-px w-8 bg-brand-blue"></div>
-            <p class="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-brand-gray">Web apps</p>
+            <p class="mb-3 text-xs font-bold uppercase tracking-widest text-brand-gray">Web apps</p>
             <h3 class="mb-4 text-lg font-bold text-white">Custom interfaces & internal tools</h3>
             <p class="text-sm leading-relaxed text-brand-gray">
               Dashboards, admin panels and portals built around your workflows and data — not the other way around.
@@ -255,9 +249,9 @@
             </a>
           </div>
 
-          <div class="py-8 px-8">
+          <div class="sol-col py-8 md:px-8">
             <div class="mb-8 h-px w-8 bg-brand-blue"></div>
-            <p class="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-brand-gray">Automation</p>
+            <p class="mb-3 text-xs font-bold uppercase tracking-widest text-brand-gray">Automation</p>
             <h3 class="mb-4 text-lg font-bold text-white">Connected, low-friction workflows</h3>
             <p class="text-sm leading-relaxed text-brand-gray">
               n8n, Make and custom APIs to move data between forms, CRMs, payment systems and reports — without manual copy-paste.
@@ -267,161 +261,168 @@
             </a>
           </div>
 
-          <div class="py-8 pl-8">
+          <div class="sol-col py-8 md:pl-8">
             <div class="mb-8 h-px w-8 bg-brand-blue"></div>
-            <p class="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-brand-gray">Data & AI</p>
+            <p class="mb-3 text-xs font-bold uppercase tracking-widest text-brand-gray">Data & AI</p>
             <h3 class="mb-4 text-lg font-bold text-white">Insightful reporting & assisted flows</h3>
             <p class="text-sm leading-relaxed text-brand-gray">
-              Clean data models, dashboards and AI-assisted tools that help your team make better decisions without adding noise.
+              Clean data models, dashboards and AI-assisted tools that help your team make better decisions without noise.
             </p>
             <a href="#contact" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:gap-3 transition-all">
               Discuss your project <span>→</span>
             </a>
           </div>
-
         </div>
-
       </div>
     </section>
 
     <!-- ─── PROCESS — white ─── -->
-    <section id="how-we-work" class="bg-white py-20 md:py-28">
-      <div class="mx-auto max-w-6xl px-4 md:px-8">
+    <section id="how-we-work" class="relative overflow-hidden bg-white py-16 md:py-24">
+      <!-- Process: two diamonds -->
+      <div class="absolute top-12 right-10 float-b pointer-events-none">
+        <div class="sh-diamond-b"></div>
+      </div>
+      <div class="absolute bottom-10 left-8 float-a pointer-events-none">
+        <div class="sh-diamond-b" style="width:65px;height:65px;"></div>
+      </div>
 
-        <div class="mb-16 fade-up">
-          <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.28em] text-brand-gray">Process</p>
+      <div class="relative mx-auto max-w-6xl px-4 md:px-8">
+        <div class="mb-14 fade-up">
+          <p class="mb-5 text-xs font-bold uppercase tracking-widest text-brand-gray">Process</p>
           <h2 class="text-3xl font-bold leading-tight text-brand-black md:text-5xl">
             What happens after<br/>you reach out.
           </h2>
         </div>
 
-        <div class="grid gap-12 md:grid-cols-3 fade-up" style="transition-delay: 0.1s">
-
+        <div class="grid gap-10 md:grid-cols-3 fade-up" style="transition-delay:0.1s">
           <div>
-            <p class="mb-6 text-7xl font-bold text-brand-blue" style="opacity:0.18">01</p>
+            <p class="mb-5 text-7xl font-bold text-brand-blue" style="opacity:0.15">01</p>
             <h3 class="mb-3 text-lg font-bold text-brand-black">Discovery</h3>
             <p class="text-sm leading-relaxed text-brand-gray">
               A 30-minute call where we map your current tools, friction points, and what a good outcome looks like. No sales pitch — just clarity on whether we're the right fit.
             </p>
           </div>
-
           <div>
-            <p class="mb-6 text-7xl font-bold text-brand-blue" style="opacity:0.18">02</p>
+            <p class="mb-5 text-7xl font-bold text-brand-blue" style="opacity:0.15">02</p>
             <h3 class="mb-3 text-lg font-bold text-brand-black">Build</h3>
             <p class="text-sm leading-relaxed text-brand-gray">
               Architecture first, then development in short cycles. You see real progress early and give feedback on working software — not docs, on the actual thing.
             </p>
           </div>
-
           <div>
-            <p class="mb-6 text-7xl font-bold text-brand-blue" style="opacity:0.18">03</p>
+            <p class="mb-5 text-7xl font-bold text-brand-blue" style="opacity:0.15">03</p>
             <h3 class="mb-3 text-lg font-bold text-brand-black">Launch</h3>
             <p class="text-sm leading-relaxed text-brand-gray">
               We deploy, onboard your team, and document what we built. After launch, we stay available — not gone the moment we send the invoice.
             </p>
           </div>
-
         </div>
       </div>
     </section>
 
     <!-- ─── PRODUCTS — blue ─── -->
-    <section id="reservio" class="relative overflow-hidden bg-brand-blue py-20 md:py-28">
-      <div class="absolute top-10 right-16 float-slow-2 opacity-15 pointer-events-none hidden md:block">
-        <div class="shape-square"></div>
+    <section id="reservio" class="relative overflow-hidden bg-brand-blue py-16 md:py-24">
+      <!-- Reservio: two circles -->
+      <div class="absolute top-12 right-14 float-b pointer-events-none">
+        <div class="sh-circle-w" style="width:100px;height:100px;"></div>
       </div>
-      <div class="absolute bottom-10 left-20 float-slow-3 opacity-10 pointer-events-none hidden md:block">
-        <div class="shape-circle"></div>
+      <div class="absolute bottom-10 left-16 float-d pointer-events-none">
+        <div class="sh-circle-w" style="width:60px;height:60px;"></div>
       </div>
 
       <div class="relative mx-auto max-w-6xl px-4 md:px-8">
-
-        <div class="mb-12 fade-up">
-          <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.28em] text-white/45">Products</p>
+        <div class="mb-10 fade-up">
+          <p class="mb-5 text-xs font-bold uppercase tracking-widest" style="color:rgba(255,255,255,0.45)">Products</p>
           <h2 class="text-3xl font-bold text-white md:text-5xl">
             Software we built<br/>and shipped ourselves.
           </h2>
         </div>
 
-        <div class="grid gap-12 md:grid-cols-[1.15fr,0.85fr] md:items-center fade-up" style="transition-delay: 0.1s">
-
+        <div class="grid gap-10 md:grid-cols-[1.15fr,0.85fr] md:items-center fade-up" style="transition-delay:0.1s">
           <div class="space-y-6">
-            <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-white/65">
+            <span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-widest" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7)">
               <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400"></span>
               Live product
             </span>
             <h3 class="text-5xl font-bold text-white md:text-6xl">Reservio</h3>
-            <p class="max-w-md text-base leading-relaxed text-white/65 md:text-[17px]">
+            <p class="max-w-md text-base leading-relaxed md:text-lg" style="color:rgba(255,255,255,0.65)">
               Booking platform for personal trainers and their clients. Schedule sessions, manage payments, and keep everything in one frictionless flow — no spreadsheets, no back-and-forth.
             </p>
             <div class="flex flex-wrap gap-2 pt-1">
-              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-white/65">Stripe payments</span>
-              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-white/65">Real-time booking</span>
-              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-white/65">Trainer directory</span>
-              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-white/65">Client portal</span>
+              <span class="rounded-full px-3 py-1 text-xs" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Stripe payments</span>
+              <span class="rounded-full px-3 py-1 text-xs" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Real-time booking</span>
+              <span class="rounded-full px-3 py-1 text-xs" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Trainer directory</span>
+              <span class="rounded-full px-3 py-1 text-xs" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.65)">Client portal</span>
             </div>
             <a href="https://app.rosariodev.com" target="_blank" rel="noopener noreferrer"
                aria-label="Try Reservio (opens in a new tab)"
-               class="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-bold text-brand-blue hover:bg-white/90 transition">
+               class="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-bold text-brand-blue hover:opacity-90 transition">
               Try Reservio <span>↗</span>
             </a>
           </div>
 
-          <div class="rounded-2xl border border-white/15 p-6 md:p-8 space-y-5">
-            <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-white/35">How it works</p>
+          <div class="rounded-2xl p-6 md:p-8 space-y-4" style="border:1px solid rgba(255,255,255,0.18)">
+            <p class="text-xs font-bold uppercase tracking-widest" style="color:rgba(255,255,255,0.38)">How it works</p>
             <div class="space-y-4">
               <div class="flex items-start gap-4">
-                <span class="shrink-0 text-xs font-bold text-white/30">01</span>
-                <p class="text-sm text-white/75">Trainers create their profile and set availability</p>
+                <span class="shrink-0 text-xs font-bold" style="color:rgba(255,255,255,0.32)">01</span>
+                <p class="text-sm" style="color:rgba(255,255,255,0.75)">Trainers create their profile and set availability</p>
               </div>
-              <div class="h-px bg-white/08"></div>
+              <div style="height:1px;background:rgba(255,255,255,0.10)"></div>
               <div class="flex items-start gap-4">
-                <span class="shrink-0 text-xs font-bold text-white/30">02</span>
-                <p class="text-sm text-white/75">Clients browse, book, and pay in one step</p>
+                <span class="shrink-0 text-xs font-bold" style="color:rgba(255,255,255,0.32)">02</span>
+                <p class="text-sm" style="color:rgba(255,255,255,0.75)">Clients browse, book, and pay in one step</p>
               </div>
-              <div class="h-px bg-white/08"></div>
+              <div style="height:1px;background:rgba(255,255,255,0.10)"></div>
               <div class="flex items-start gap-4">
-                <span class="shrink-0 text-xs font-bold text-white/30">03</span>
-                <p class="text-sm text-white/75">Payments processed securely via Stripe</p>
+                <span class="shrink-0 text-xs font-bold" style="color:rgba(255,255,255,0.32)">03</span>
+                <p class="text-sm" style="color:rgba(255,255,255,0.75)">Payments processed securely via Stripe</p>
               </div>
-              <div class="h-px bg-white/08"></div>
+              <div style="height:1px;background:rgba(255,255,255,0.10)"></div>
               <div class="flex items-start gap-4">
-                <span class="shrink-0 text-xs font-bold text-white/30">04</span>
-                <p class="text-sm text-white/75">Both parties manage everything from one dashboard</p>
+                <span class="shrink-0 text-xs font-bold" style="color:rgba(255,255,255,0.32)">04</span>
+                <p class="text-sm" style="color:rgba(255,255,255,0.75)">Both parties manage everything from one dashboard</p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ─── TOOLS / TRUST — white ─── -->
-    <section class="bg-white py-16 md:py-20">
+    <!-- ─── TOOLS — white ─── -->
+    <section class="bg-white py-14 md:py-18">
       <div class="mx-auto max-w-6xl px-4 md:px-8">
-        <p class="mb-8 text-[11px] font-bold uppercase tracking-[0.28em] text-brand-gray fade-up">
+        <p class="mb-8 text-xs font-bold uppercase tracking-widest text-brand-gray fade-up">
           Tools & ecosystems we work with
         </p>
-        <div class="flex flex-wrap items-center gap-8 md:gap-12 fade-up" style="transition-delay: 0.1s">
-          <img src="assets/logo-stripe.png"       alt="Stripe"      loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 transition hover:grayscale-0 hover:opacity-90" />
-          <img src="assets/logo-supabase.jpeg"   alt="Supabase"    loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 rounded transition hover:grayscale-0 hover:opacity-90" />
-          <img src="assets/logo-airtable.png"    alt="Airtable"    loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 transition hover:grayscale-0 hover:opacity-90" />
-          <img src="assets/logo-n8n.png"         alt="n8n"         loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 transition hover:grayscale-0 hover:opacity-90" />
-          <img src="assets/logo-make.jpeg"       alt="Make"        loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 rounded transition hover:grayscale-0 hover:opacity-90" />
-          <img src="assets/logo-aws.png"         alt="AWS"         loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 transition hover:grayscale-0 hover:opacity-90" />
-          <img src="assets/logo-powerapps.png"   alt="Power Apps"  loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 transition hover:grayscale-0 hover:opacity-90" />
-          <img src="assets/logo-flutterflow.png" alt="FlutterFlow" loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 transition hover:grayscale-0 hover:opacity-90" />
+        <div class="flex flex-wrap items-center gap-8 md:gap-12 fade-up" style="transition-delay:0.1s">
+          <img src="assets/logo-stripe.png"       alt="Stripe"      loading="lazy" decoding="async" class="h-6 w-auto grayscale transition" style="opacity:0.4" onmouseover="this.style.opacity='1';this.style.filter='none'" onmouseout="this.style.opacity='0.4';this.style.filter='grayscale(1)'" />
+          <img src="assets/logo-supabase.jpeg"   alt="Supabase"    loading="lazy" decoding="async" class="h-6 w-auto grayscale rounded transition" style="opacity:0.4" onmouseover="this.style.opacity='1';this.style.filter='none'" onmouseout="this.style.opacity='0.4';this.style.filter='grayscale(1)'" />
+          <img src="assets/logo-airtable.png"    alt="Airtable"    loading="lazy" decoding="async" class="h-6 w-auto grayscale transition" style="opacity:0.4" onmouseover="this.style.opacity='1';this.style.filter='none'" onmouseout="this.style.opacity='0.4';this.style.filter='grayscale(1)'" />
+          <img src="assets/logo-n8n.png"         alt="n8n"         loading="lazy" decoding="async" class="h-6 w-auto grayscale transition" style="opacity:0.4" onmouseover="this.style.opacity='1';this.style.filter='none'" onmouseout="this.style.opacity='0.4';this.style.filter='grayscale(1)'" />
+          <img src="assets/logo-make.jpeg"       alt="Make"        loading="lazy" decoding="async" class="h-6 w-auto grayscale rounded transition" style="opacity:0.4" onmouseover="this.style.opacity='1';this.style.filter='none'" onmouseout="this.style.opacity='0.4';this.style.filter='grayscale(1)'" />
+          <img src="assets/logo-aws.png"         alt="AWS"         loading="lazy" decoding="async" class="h-6 w-auto grayscale transition" style="opacity:0.4" onmouseover="this.style.opacity='1';this.style.filter='none'" onmouseout="this.style.opacity='0.4';this.style.filter='grayscale(1)'" />
+          <img src="assets/logo-powerapps.png"   alt="Power Apps"  loading="lazy" decoding="async" class="h-6 w-auto grayscale transition" style="opacity:0.4" onmouseover="this.style.opacity='1';this.style.filter='none'" onmouseout="this.style.opacity='0.4';this.style.filter='grayscale(1)'" />
+          <img src="assets/logo-flutterflow.png" alt="FlutterFlow" loading="lazy" decoding="async" class="h-6 w-auto grayscale transition" style="opacity:0.4" onmouseover="this.style.opacity='1';this.style.filter='none'" onmouseout="this.style.opacity='0.4';this.style.filter='grayscale(1)'" />
         </div>
       </div>
     </section>
 
     <!-- ─── CONTACT — dark ─── -->
-    <section id="contact" class="bg-brand-dark py-20 md:py-28">
-      <div class="mx-auto max-w-6xl px-4 md:px-8">
-        <div class="grid gap-16 md:grid-cols-[0.85fr,1.15fr] md:items-start">
+    <section id="contact" class="relative overflow-hidden bg-brand-dark py-16 md:py-24">
+      <!-- Contact: two squares -->
+      <div class="absolute top-10 right-14 float-a pointer-events-none">
+        <div class="sh-square-w" style="width:90px;height:90px;"></div>
+      </div>
+      <div class="absolute bottom-12 left-8 float-c pointer-events-none">
+        <div class="sh-square-w" style="width:55px;height:55px;"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-6xl px-4 md:px-8">
+        <div class="grid gap-14 md:grid-cols-[0.85fr,1.15fr] md:items-start">
 
           <div class="space-y-6 fade-up">
-            <p class="text-[11px] font-bold uppercase tracking-[0.28em] text-brand-gray">Contact</p>
+            <p class="text-xs font-bold uppercase tracking-widest text-brand-gray">Contact</p>
             <h2 class="text-3xl font-bold leading-tight text-white md:text-5xl">
               Let's design the backbone of your operations.
             </h2>
@@ -431,42 +432,50 @@
             <div class="space-y-3 pt-2">
               <div class="flex items-center gap-4">
                 <div class="h-px w-6 bg-brand-blue shrink-0"></div>
-                <p class="text-sm text-white/65">contact@rosariodev.com</p>
+                <p class="text-sm text-brand-gray">contact@rosariodev.com</p>
               </div>
               <div class="flex items-center gap-4">
                 <div class="h-px w-6 bg-brand-blue shrink-0"></div>
-                <p class="text-sm text-white/65">+1 (787) 239-7182</p>
+                <p class="text-sm text-brand-gray">+1 (787) 239-7182</p>
               </div>
             </div>
           </div>
 
-          <div class="fade-up" style="transition-delay: 0.12s">
-            <div class="rounded-2xl border border-white/10 p-6 md:p-8">
+          <div class="fade-up" style="transition-delay:0.12s">
+            <div class="rounded-2xl p-6 md:p-8" style="border:1px solid rgba(255,255,255,0.12)">
               <p class="text-sm font-bold text-white">Project request</p>
               <p class="mt-1 mb-6 text-sm text-brand-gray">Share your brief and we'll reply with next steps.</p>
               <form id="project-form" class="space-y-4">
                 <div>
-                  <label for="full-name" class="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.14em] text-white/35">Full name</label>
+                  <label for="full-name" class="mb-1.5 block text-xs font-bold uppercase tracking-widest text-brand-gray">Full name</label>
                   <input id="full-name" name="fullName" type="text" required
-                    class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/22 focus:border-brand-blue focus:outline-none transition"
+                    class="w-full rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none transition"
+                    style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12)"
+                    onfocus="this.style.borderColor='#0b5884'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'"
                     placeholder="Your name" />
                 </div>
                 <div>
-                  <label for="email" class="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.14em] text-white/35">Email</label>
+                  <label for="email" class="mb-1.5 block text-xs font-bold uppercase tracking-widest text-brand-gray">Email</label>
                   <input id="email" name="email" type="email" required
-                    class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/22 focus:border-brand-blue focus:outline-none transition"
+                    class="w-full rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none transition"
+                    style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12)"
+                    onfocus="this.style.borderColor='#0b5884'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'"
                     placeholder="you@company.com" />
                 </div>
                 <div>
-                  <label for="company" class="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.14em] text-white/35">Company (optional)</label>
+                  <label for="company" class="mb-1.5 block text-xs font-bold uppercase tracking-widest text-brand-gray">Company (optional)</label>
                   <input id="company" name="company" type="text"
-                    class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/22 focus:border-brand-blue focus:outline-none transition"
+                    class="w-full rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none transition"
+                    style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12)"
+                    onfocus="this.style.borderColor='#0b5884'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'"
                     placeholder="Business name" />
                 </div>
                 <div>
-                  <label for="needs" class="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.14em] text-white/35">What do you need?</label>
+                  <label for="needs" class="mb-1.5 block text-xs font-bold uppercase tracking-widest text-brand-gray">What do you need?</label>
                   <textarea id="needs" name="needs" required rows="4"
-                    class="w-full resize-y rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/22 focus:border-brand-blue focus:outline-none transition"
+                    class="w-full resize-y rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none transition"
+                    style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12)"
+                    onfocus="this.style.borderColor='#0b5884'" onblur="this.style.borderColor='rgba(255,255,255,0.12)'"
                     placeholder="Tell me about your process, pain points, and what outcome you want."></textarea>
                 </div>
                 <button type="submit"
@@ -474,9 +483,12 @@
                   Send project request
                 </button>
               </form>
-              <p class="mt-3 text-xs text-white/28">This form opens your email app with a structured message.</p>
+              <p class="mt-3 text-xs text-brand-gray">This form opens your email app with a structured message.</p>
               <a href="https://wa.me/17872397182" target="_blank" rel="noopener noreferrer"
-                 class="mt-3 inline-flex w-full items-center justify-center rounded-full border border-white/12 py-3 text-sm font-bold text-white/50 hover:border-white/28 hover:text-white/80 transition">
+                 class="mt-3 inline-flex w-full items-center justify-center rounded-full py-3 text-sm font-bold text-brand-gray hover:text-white transition"
+                 style="border:1px solid rgba(255,255,255,0.15)"
+                 onmouseover="this.style.borderColor='rgba(255,255,255,0.35)'"
+                 onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'">
                 Write on WhatsApp
               </a>
             </div>
@@ -492,7 +504,7 @@
         <div class="rounded-lg bg-white px-3 py-1.5">
           <img src="assets/logo-rosariodev-horizontal.png" alt="RosarioDev" class="h-6 w-auto" />
         </div>
-        <p class="text-xs text-white/28">© 2026 RosarioDev. Studio for software, automation & AI.</p>
+        <p class="text-xs text-brand-gray">© 2026 RosarioDev. Studio for software, automation & AI.</p>
       </div>
     </footer>
 
