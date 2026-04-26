@@ -4,24 +4,15 @@
     <meta charset="UTF-8" />
     <title>RosarioDev — Software · Automation · AI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="RosarioDev builds custom web apps, automation flows and AI-assisted tools for businesses that need practical, reliable systems."
-    />
-    <meta name="theme-color" content="#111827" />
+    <meta name="description" content="RosarioDev builds custom web apps, automation flows and AI-assisted tools for businesses that need practical, reliable systems." />
+    <meta name="theme-color" content="#0b5884" />
     <meta property="og:title" content="RosarioDev — Software · Automation · AI" />
-    <meta
-      property="og:description"
-      content="Custom software, automation and AI-assisted tools built around your real workflows."
-    />
+    <meta property="og:description" content="Custom software, automation and AI-assisted tools built around your real workflows." />
     <meta property="og:type" content="website" />
     <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sansation:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Sansation:wght@400;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -31,15 +22,12 @@
             colors: {
               brand: {
                 white: "#ffffff",
-                indigoSoft: "#0b5884",
-                navyMuted: "#162536",
-                navyDeep: "#111827",
-                accent: "#0b5884",
+                black: "#000000",
+                blue: "#0b5884",
+                dark: "#111827",
+                gray: "#687280",
+                light: "#f5f6f7",
               },
-            },
-            boxShadow: {
-              card: "0 18px 45px rgba(15,23,42,0.18)",
-              soft: "0 14px 30px rgba(15,23,42,0.12)",
             },
           },
         },
@@ -47,23 +35,12 @@
     </script>
 
     <style>
-      html {
-        scroll-behavior: smooth;
-      }
+      html { scroll-behavior: smooth; }
 
-      .float-soft {
-        animation: floatSoft 9s ease-in-out infinite;
-      }
-      @keyframes floatSoft {
-        0%, 100% { transform: translateY(0); }
-        50%       { transform: translateY(-10px); }
-      }
-
-      /* Scroll-triggered fade-up — JS adds .visible when element enters viewport */
       .fade-up {
         opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        transform: translateY(24px);
+        transition: opacity 0.65s ease-out, transform 0.65s ease-out;
       }
       .fade-up.visible {
         opacity: 1;
@@ -77,563 +54,450 @@
       button:focus-visible {
         outline: 2px solid #0b5884;
         outline-offset: 2px;
-        border-radius: 9999px;
+        border-radius: 4px;
       }
 
       @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
+        html { scroll-behavior: auto; }
+        * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        .fade-up { opacity: 1; transform: none; }
+      }
 
-        * {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
+      .float-slow  { animation: floatY 12s ease-in-out infinite; }
+      .float-slow-2 { animation: floatY 15s ease-in-out infinite reverse; }
+      .float-slow-3 { animation: floatY 10s ease-in-out infinite 3s; }
+      @keyframes floatY {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(-20px); }
+      }
 
-        .fade-up {
-          opacity: 1;
-          transform: none;
+      .shape-diamond {
+        width: 110px;
+        height: 110px;
+        border: 1.5px solid rgba(255,255,255,0.3);
+        transform: rotate(45deg);
+      }
+      .shape-square {
+        width: 80px;
+        height: 80px;
+        border: 1.5px solid rgba(255,255,255,0.25);
+      }
+      .shape-circle {
+        width: 90px;
+        height: 90px;
+        border: 1.5px solid rgba(255,255,255,0.22);
+        border-radius: 50%;
+      }
+
+      /* Solutions grid separator lines */
+      .solutions-grid > div + div {
+        border-left: 1px solid rgba(255,255,255,0.08);
+      }
+      @media (max-width: 767px) {
+        .solutions-grid > div + div {
+          border-left: none;
+          border-top: 1px solid rgba(255,255,255,0.08);
         }
       }
     </style>
   </head>
 
-  <body class="font-sans text-brand-white">
-    <div class="min-h-screen bg-brand-navyDeep">
+  <body class="font-sans bg-brand-white text-brand-black">
 
-      <!-- NAVBAR -->
-      <header class="sticky top-0 z-30 border-b border-brand-navyMuted/40 bg-brand-navyDeep/80 backdrop-blur-md">
-        <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6">
+    <!-- ─── NAVBAR ─── -->
+    <header class="sticky top-0 z-30 bg-white border-b border-gray-100">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8">
 
-          <div class="flex items-center">
-            <div class="rounded-xl bg-white px-3 py-1.5">
-              <img src="assets/logo-rosariodev-horizontal.png" alt="RosarioDev" class="h-7 w-auto" />
-            </div>
-          </div>
+        <a href="/">
+          <img src="assets/logo-rosariodev-horizontal.png" alt="RosarioDev" class="h-8 w-auto" />
+        </a>
 
-          <!-- Desktop nav -->
-          <nav class="hidden items-center gap-6 text-xs font-medium text-brand-white/70 md:flex">
-            <a href="#about"        class="hover:text-brand-white transition">About</a>
-            <a href="#solutions"    class="hover:text-brand-white transition">Solutions</a>
-            <a href="#how-we-work"  class="hover:text-brand-white transition">Process</a>
-            <a href="#reservio"     class="hover:text-brand-white transition">Products</a>
-            <a href="#contact"      class="hover:text-brand-white transition">Contact</a>
-          </nav>
+        <nav class="hidden items-center gap-8 text-sm text-brand-gray md:flex">
+          <a href="#about"       class="hover:text-brand-black transition-colors">About</a>
+          <a href="#solutions"   class="hover:text-brand-black transition-colors">Solutions</a>
+          <a href="#how-we-work" class="hover:text-brand-black transition-colors">Process</a>
+          <a href="#reservio"    class="hover:text-brand-black transition-colors">Products</a>
+          <a href="#contact"     class="hover:text-brand-black transition-colors">Contact</a>
+        </nav>
 
-          <div class="flex items-center gap-3">
-            <a
-              href="#contact"
-              class="rounded-full bg-brand-accent px-4 py-1.5 text-xs font-semibold text-brand-white shadow-soft hover:brightness-110 transition"
-            >
-              Work with me
+        <div class="flex items-center gap-3">
+          <a href="#contact" class="hidden md:inline-flex rounded-full bg-brand-blue px-5 py-2 text-sm font-bold text-white hover:opacity-90 transition">
+            Work with me
+          </a>
+          <button id="menu-btn" class="flex flex-col gap-1.5 p-1 md:hidden"
+            aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+            <span class="h-0.5 w-5 rounded bg-brand-black transition-all"></span>
+            <span class="h-0.5 w-5 rounded bg-brand-black transition-all"></span>
+            <span class="h-0.5 w-5 rounded bg-brand-black transition-all"></span>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="border-t border-gray-100 bg-white px-4 pb-5 md:hidden">
+        <nav class="flex flex-col gap-4 pt-4 text-sm text-brand-gray">
+          <a href="#about"       class="hover:text-brand-black" onclick="closeMenu()">About</a>
+          <a href="#solutions"   class="hover:text-brand-black" onclick="closeMenu()">Solutions</a>
+          <a href="#how-we-work" class="hover:text-brand-black" onclick="closeMenu()">Process</a>
+          <a href="#reservio"    class="hover:text-brand-black" onclick="closeMenu()">Products</a>
+          <a href="#contact"     class="hover:text-brand-black" onclick="closeMenu()">Contact</a>
+          <a href="#contact" onclick="closeMenu()"
+             class="mt-1 flex items-center justify-center rounded-full bg-brand-blue py-2.5 text-sm font-bold text-white">
+            Work with me
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ─── HERO — blue ─── -->
+    <section class="relative overflow-hidden bg-brand-blue">
+      <!-- Floating geometric marks -->
+      <div class="absolute top-10 left-8 float-slow opacity-30 pointer-events-none">
+        <div class="shape-diamond"></div>
+      </div>
+      <div class="absolute top-16 right-12 float-slow-2 opacity-20 pointer-events-none hidden md:block">
+        <div class="shape-square"></div>
+      </div>
+      <div class="absolute bottom-14 left-1/3 float-slow-3 opacity-15 pointer-events-none hidden md:block">
+        <div class="shape-circle"></div>
+      </div>
+      <div class="absolute bottom-8 right-6 float-slow opacity-10 pointer-events-none">
+        <div class="shape-diamond" style="width:56px;height:56px;"></div>
+      </div>
+
+      <div class="relative mx-auto max-w-6xl px-4 py-20 md:px-8 md:py-32">
+        <div class="max-w-3xl fade-up">
+          <p class="mb-6 inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-white/50">
+            <span class="h-px w-8 bg-white/40"></span>
+            Software · Automation · AI
+          </p>
+          <h1 class="text-4xl font-bold leading-[1.08] text-white md:text-6xl">
+            Real software<br/>
+            for the way your<br/>
+            business works.
+          </h1>
+          <p class="mt-6 max-w-xl text-base leading-relaxed text-white/65 md:text-lg">
+            RosarioDev builds custom web apps, automation flows and AI-assisted tools.
+            No templates, no unnecessary complexity — just systems that reduce friction.
+          </p>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a href="#contact"
+               class="rounded-full bg-white px-7 py-3 text-sm font-bold text-brand-blue hover:bg-white/90 transition">
+              Book a discovery call
             </a>
-            <!-- Hamburger (mobile only) -->
-            <button
-              id="menu-btn"
-              class="flex flex-col gap-1.5 p-1 md:hidden"
-              aria-controls="mobile-menu"
-              aria-expanded="false"
-              aria-label="Open menu"
-            >
-              <span class="h-0.5 w-5 rounded bg-brand-white/80 transition-all"></span>
-              <span class="h-0.5 w-5 rounded bg-brand-white/80 transition-all"></span>
-              <span class="h-0.5 w-5 rounded bg-brand-white/80 transition-all"></span>
-            </button>
+            <a href="#solutions"
+               class="rounded-full border border-white/35 px-7 py-3 text-sm font-bold text-white hover:border-white/70 transition">
+              Explore solutions
+            </a>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="border-t border-brand-navyMuted/40 bg-brand-navyDeep/95 px-4 pb-4 md:hidden">
-          <nav class="flex flex-col gap-3 pt-3 text-sm text-brand-white/70">
-            <a href="#about"       class="hover:text-brand-white transition" onclick="closeMenu()">About</a>
-            <a href="#solutions"   class="hover:text-brand-white transition" onclick="closeMenu()">Solutions</a>
-            <a href="#how-we-work" class="hover:text-brand-white transition" onclick="closeMenu()">Process</a>
-            <a href="#reservio"    class="hover:text-brand-white transition" onclick="closeMenu()">Products</a>
-            <a href="#contact"     class="hover:text-brand-white transition" onclick="closeMenu()">Contact</a>
-          </nav>
-        </div>
-      </header>
+    <!-- ─── ABOUT — white ─── -->
+    <section id="about" class="bg-white py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-4 md:px-8">
+        <div class="grid gap-14 md:grid-cols-2 md:items-center">
 
-      <!-- HERO -->
-      <section class="bg-brand-navyDeep">
-        <div class="mx-auto grid max-w-6xl gap-10 px-4 pb-16 pt-10 md:grid-cols-[1.1fr,1.1fr] md:px-6 md:pb-20 md:pt-16">
-
-          <!-- Left: text -->
-          <div class="space-y-7 fade-up">
-            <p class="inline-flex items-center gap-2 rounded-full bg-brand-indigoSoft/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-brand-accent">
-              <span class="h-1.5 w-1.5 rounded-full bg-brand-accent"></span>
-              Software · Automation · AI
-            </p>
-
-            <h1 class="text-3xl font-semibold leading-tight text-brand-white md:text-4xl">
-              Create <strong>real</strong> software solutions
-              <span class="block text-brand-accent">for the way your business actually works.</span>
-            </h1>
-
-            <p class="max-w-lg text-sm leading-relaxed text-brand-white/70 md:text-[15px]">
-              RosarioDev is a small studio focused on building custom web apps,
-              automation flows and AI-assisted tools. No generic templates, no
-              unnecessary complexity—just systems that reduce friction in your daily operations.
-            </p>
-
-            <div class="flex flex-wrap items-center gap-3">
-              <a
-                href="#contact"
-                class="rounded-full bg-brand-accent px-6 py-2.5 text-xs font-semibold text-brand-white shadow-soft hover:brightness-110 transition"
-              >
-                Book a discovery call
-              </a>
-              <a
-                href="#solutions"
-                class="rounded-full border border-brand-indigoSoft/60 px-6 py-2.5 text-xs font-semibold text-brand-white/80 hover:border-brand-accent hover:text-brand-accent transition"
-              >
-                Explore solutions
-              </a>
-            </div>
-
-            <p class="text-[11px] text-brand-white/60">
-              Ideal for digital businesses, studios and teams that need reliable
-              internal tools, without hiring a full dev team.
-            </p>
-          </div>
-
-          <!-- Right: decorative visual (replaces missing hero-city.jpg) -->
-          <div class="flex items-center justify-end fade-up" style="transition-delay: 0.15s">
-            <div class="float-soft relative h-[280px] w-full max-w-md md:h-[340px]">
-              <div class="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-brand-indigoSoft/30 to-brand-navyMuted/50"></div>
-              <div class="relative flex h-full w-full flex-col justify-between rounded-[2.5rem] p-6 ring-1 ring-brand-indigoSoft/30">
-                <div class="flex items-center gap-3 rounded-2xl bg-brand-navyDeep/70 p-3.5 ring-1 ring-brand-indigoSoft/20">
-                  <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-accent/20 text-lg">⚡</div>
-                  <div>
-                    <p class="text-[10px] text-brand-white/50">Workflow automated</p>
-                    <p class="text-xs font-semibold text-brand-white">Client onboarding → 4 min</p>
-                  </div>
-                </div>
-                <div class="flex items-center gap-3 rounded-2xl bg-brand-navyDeep/70 p-3.5 ring-1 ring-brand-indigoSoft/20">
-                  <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-indigoSoft/30 text-lg">📊</div>
-                  <div>
-                    <p class="text-[10px] text-brand-white/50">Internal dashboard</p>
-                    <p class="text-xs font-semibold text-brand-white">Live reports, no manual exports</p>
-                  </div>
-                </div>
-                <div class="flex items-center gap-3 rounded-2xl bg-brand-navyDeep/70 p-3.5 ring-1 ring-brand-indigoSoft/20">
-                  <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-green-500/20 text-lg">✓</div>
-                  <div>
-                    <p class="text-[10px] text-brand-white/50">Product shipped</p>
-                    <p class="text-xs font-semibold text-brand-white">Reservio — live & running</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION: ABOUT -->
-      <section id="about" class="bg-brand-navyDeep/95 pb-16 pt-4 md:pb-18 md:pt-6">
-        <div class="mx-auto max-w-6xl px-4 md:px-6">
-          <div class="grid gap-8 md:grid-cols-[0.9fr,1.1fr] md:items-start fade-up">
-            <div class="space-y-5">
-              <div class="inline-flex rounded-2xl bg-brand-indigoSoft/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-white/80">
-                About RosarioDev
-              </div>
-              <h2 class="text-xl font-semibold text-brand-white md:text-2xl">
-                A focused studio for custom, honest software.
-              </h2>
-              <p class="text-sm leading-relaxed text-brand-white/70">
-                Instead of pushing you into a one-size-fits-all platform,
-                RosarioDev studies how you actually operate—your tools, your
-                constraints, your clients—and then designs solutions around that reality.
-              </p>
-              <p class="text-sm leading-relaxed text-brand-white/70">
-                From the first automation to a complete internal system, every
-                decision is driven by clarity: fewer tabs, fewer manual steps, more control.
-              </p>
-            </div>
-
-            <div class="grid gap-4 text-sm text-brand-white/75 md:grid-cols-2 md:text-[13px]">
-              <div class="rounded-2xl border border-brand-indigoSoft/30 bg-brand-navyMuted/50 p-5 shadow-soft">
-                <p class="text-xs font-semibold uppercase tracking-[0.18em]">Thoughtful systems</p>
-                <p class="mt-2">Every feature and integration must earn its place. If it doesn't simplify your work, it doesn't ship.</p>
-              </div>
-              <div class="rounded-2xl border border-brand-indigoSoft/30 bg-brand-navyMuted/50 p-5 shadow-soft">
-                <p class="text-xs font-semibold uppercase tracking-[0.18em]">Long-term mindset</p>
-                <p class="mt-2">Clear architecture and documentation so your tools stay understandable, even as you grow.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION: SOLUTIONS -->
-      <section id="solutions" class="bg-brand-navyDeep/98 pb-16 pt-4 md:pb-20 md:pt-6">
-        <div class="mx-auto max-w-6xl px-4 md:px-6">
-          <div class="grid gap-8 md:grid-cols-[0.8fr,1.2fr]">
-
-            <div class="space-y-6 fade-up">
-              <div class="flex h-40 flex-col justify-between rounded-3xl bg-brand-indigoSoft p-5 shadow-card md:h-48">
-                <div>
-                  <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-white/80">Snapshot</p>
-                  <h3 class="mt-2 text-lg font-semibold text-brand-white">What RosarioDev does</h3>
-                </div>
-                <p class="text-sm text-brand-white/80">Design and build tailored systems: from small automations to full internal tools.</p>
-              </div>
-
-              <div class="flex h-40 flex-col justify-between rounded-3xl bg-brand-navyMuted p-5 shadow-card md:h-48">
-                <div>
-                  <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-white/80">Fit</p>
-                  <h3 class="mt-2 text-lg font-semibold text-brand-white">When it makes sense</h3>
-                </div>
-                <p class="text-sm text-brand-white/80">You need something more coherent than a pile of spreadsheets, but not a full corporate ERP yet.</p>
-              </div>
-            </div>
-
-            <div class="space-y-6 fade-up" style="transition-delay: 0.1s">
-              <h2 class="text-xl font-semibold text-brand-white md:text-2xl">
-                From messy workflows to connected, reliable systems.
-              </h2>
-              <p class="text-sm leading-relaxed text-brand-white/70">
-                Maybe your operation currently lives inside WhatsApp, Google
-                Sheets, and a couple of SaaS tools. It works, but it's fragile:
-                things get lost, reporting is painful, and onboarding new people is slow.
-              </p>
-              <p class="text-sm leading-relaxed text-brand-white/70">
-                RosarioDev focuses on designing the backbone: clear data structures,
-                predictable processes, and interfaces your team can actually use day-to-day.
-              </p>
-              <a
-                href="#contact"
-                class="inline-flex items-center gap-2 rounded-full border border-brand-accent/70 px-5 py-2.5 text-xs font-semibold text-brand-accent hover:bg-brand-accent hover:text-brand-white transition"
-              >
-                Start with a 30-minute call
-                <span class="text-base leading-none">↗</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION: HOW WE WORK -->
-      <section id="how-we-work" class="bg-brand-navyDeep/95 pb-16 pt-4 md:pb-20 md:pt-6">
-        <div class="mx-auto max-w-6xl px-4 md:px-6">
-
-          <div class="mb-8 fade-up">
-            <div class="inline-flex rounded-2xl bg-brand-indigoSoft/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-white/80">
-              Process
-            </div>
-            <h2 class="mt-4 text-xl font-semibold text-brand-white md:text-2xl">
-              What happens after you reach out
+          <div class="fade-up">
+            <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.28em] text-brand-gray">About</p>
+            <h2 class="text-3xl font-bold leading-tight text-brand-black md:text-5xl">
+              A focused studio.<br/>Honest software.
             </h2>
-            <p class="mt-2 max-w-lg text-sm text-brand-white/60">
-              No surprises, no black boxes. Here's exactly how a project goes from first message to a live system.
+          </div>
+
+          <div class="space-y-5 fade-up" style="transition-delay: 0.12s">
+            <p class="text-base leading-relaxed text-brand-gray md:text-[17px]">
+              Instead of pushing you into a one-size-fits-all platform,
+              RosarioDev studies how you actually operate — your tools, your
+              constraints, your clients — and designs around that reality.
+            </p>
+            <p class="text-base leading-relaxed text-brand-gray md:text-[17px]">
+              Every decision is driven by clarity: fewer tabs, fewer manual steps, more control.
+            </p>
+            <div class="flex gap-12 pt-4 border-t border-gray-100">
+              <div>
+                <p class="text-4xl font-bold text-brand-blue">01</p>
+                <p class="mt-1.5 text-sm text-brand-gray">Thoughtful systems</p>
+              </div>
+              <div>
+                <p class="text-4xl font-bold text-brand-blue">02</p>
+                <p class="mt-1.5 text-sm text-brand-gray">Long-term mindset</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SOLUTIONS — dark ─── -->
+    <section id="solutions" class="bg-brand-dark py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-4 md:px-8">
+
+        <div class="mb-14 fade-up">
+          <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.28em] text-brand-gray">Solutions</p>
+          <h2 class="max-w-2xl text-3xl font-bold leading-tight text-white md:text-5xl">
+            From messy workflows to<br/>connected, reliable systems.
+          </h2>
+        </div>
+
+        <div class="solutions-grid grid md:grid-cols-3 fade-up" style="transition-delay: 0.1s">
+
+          <div class="py-8 pr-8">
+            <div class="mb-8 h-px w-8 bg-brand-blue"></div>
+            <p class="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-brand-gray">Web apps</p>
+            <h3 class="mb-4 text-lg font-bold text-white">Custom interfaces & internal tools</h3>
+            <p class="text-sm leading-relaxed text-brand-gray">
+              Dashboards, admin panels and portals built around your workflows and data — not the other way around.
+            </p>
+            <a href="#contact" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:gap-3 transition-all">
+              Discuss your project <span>→</span>
+            </a>
+          </div>
+
+          <div class="py-8 px-8">
+            <div class="mb-8 h-px w-8 bg-brand-blue"></div>
+            <p class="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-brand-gray">Automation</p>
+            <h3 class="mb-4 text-lg font-bold text-white">Connected, low-friction workflows</h3>
+            <p class="text-sm leading-relaxed text-brand-gray">
+              n8n, Make and custom APIs to move data between forms, CRMs, payment systems and reports — without manual copy-paste.
+            </p>
+            <a href="#contact" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:gap-3 transition-all">
+              Discuss your project <span>→</span>
+            </a>
+          </div>
+
+          <div class="py-8 pl-8">
+            <div class="mb-8 h-px w-8 bg-brand-blue"></div>
+            <p class="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-brand-gray">Data & AI</p>
+            <h3 class="mb-4 text-lg font-bold text-white">Insightful reporting & assisted flows</h3>
+            <p class="text-sm leading-relaxed text-brand-gray">
+              Clean data models, dashboards and AI-assisted tools that help your team make better decisions without adding noise.
+            </p>
+            <a href="#contact" class="mt-8 inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:gap-3 transition-all">
+              Discuss your project <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── PROCESS — white ─── -->
+    <section id="how-we-work" class="bg-white py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-4 md:px-8">
+
+        <div class="mb-16 fade-up">
+          <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.28em] text-brand-gray">Process</p>
+          <h2 class="text-3xl font-bold leading-tight text-brand-black md:text-5xl">
+            What happens after<br/>you reach out.
+          </h2>
+        </div>
+
+        <div class="grid gap-12 md:grid-cols-3 fade-up" style="transition-delay: 0.1s">
+
+          <div>
+            <p class="mb-6 text-7xl font-bold text-brand-blue" style="opacity:0.18">01</p>
+            <h3 class="mb-3 text-lg font-bold text-brand-black">Discovery</h3>
+            <p class="text-sm leading-relaxed text-brand-gray">
+              A 30-minute call where we map your current tools, friction points, and what a good outcome looks like. No sales pitch — just clarity on whether we're the right fit.
             </p>
           </div>
 
-          <div class="grid gap-4 md:grid-cols-3 fade-up" style="transition-delay: 0.1s">
-            <!-- Step 1 -->
-            <div class="rounded-3xl bg-brand-navyMuted/50 p-6 ring-1 ring-brand-indigoSoft/30">
-              <div class="mb-4 flex items-center gap-3">
-                <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-accent/20 text-sm font-bold text-brand-accent">01</div>
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-white/70">Discovery</p>
-              </div>
-              <h3 class="text-sm font-semibold text-brand-white">We map what's actually broken</h3>
-              <p class="mt-2 text-xs leading-relaxed text-brand-white/60">
-                A 30-minute call where we go through your current tools, your team's friction points, and what a good outcome looks like. No sales pitch — just clarity on whether we're the right fit.
-              </p>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="rounded-3xl bg-brand-navyMuted/50 p-6 ring-1 ring-brand-indigoSoft/30">
-              <div class="mb-4 flex items-center gap-3">
-                <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-indigoSoft/30 text-sm font-bold text-brand-indigoSoft">02</div>
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-white/70">Build</p>
-              </div>
-              <h3 class="text-sm font-semibold text-brand-white">We design and build iteratively</h3>
-              <p class="mt-2 text-xs leading-relaxed text-brand-white/60">
-                Architecture first, then development in short cycles. You see real progress early, give feedback on working software, and we adjust — not on docs, on the actual thing.
-              </p>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="rounded-3xl bg-brand-navyMuted/50 p-6 ring-1 ring-brand-indigoSoft/30">
-              <div class="mb-4 flex items-center gap-3">
-                <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-green-500/20 text-sm font-bold text-green-400">03</div>
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-white/70">Launch</p>
-              </div>
-              <h3 class="text-sm font-semibold text-brand-white">We ship and stay available</h3>
-              <p class="mt-2 text-xs leading-relaxed text-brand-white/60">
-                We deploy, onboard your team, and document what we built. After launch, we're available for improvements and maintenance — not gone the moment we send the invoice.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION: CORE OFFERINGS -->
-      <section id="offerings" class="bg-brand-navyDeep/98 pb-18 pt-4 md:pb-20 md:pt-6">
-        <div class="mx-auto max-w-6xl px-4 md:px-6">
-          <div class="flex items-center justify-between gap-4">
-            <h2 class="text-xl font-semibold text-brand-white md:text-2xl">Core offerings</h2>
-            <p class="hidden text-xs text-brand-white/60 md:block">
-              Each engagement is tailored, but most projects fall into one of these tracks.
+          <div>
+            <p class="mb-6 text-7xl font-bold text-brand-blue" style="opacity:0.18">02</p>
+            <h3 class="mb-3 text-lg font-bold text-brand-black">Build</h3>
+            <p class="text-sm leading-relaxed text-brand-gray">
+              Architecture first, then development in short cycles. You see real progress early and give feedback on working software — not docs, on the actual thing.
             </p>
           </div>
 
-          <div class="mt-7 grid gap-5 md:grid-cols-3">
-            <!-- Card 1 -->
-            <article class="flex flex-col justify-between rounded-3xl bg-brand-navyDeep p-5 shadow-card ring-1 ring-brand-indigoSoft/40 fade-up">
-              <div class="space-y-3">
-                <p class="inline-flex rounded-full bg-brand-indigoSoft/25 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-white/80">
-                  Web apps
-                </p>
-                <h3 class="text-sm font-semibold text-brand-white">Custom interfaces & internal tools</h3>
-                <p class="text-xs leading-relaxed text-brand-white/70">
-                  Dashboards, admin panels and portals built specifically around your workflows and data, not the other way around.
-                </p>
-              </div>
-              <a
-                href="#contact"
-                class="mt-4 inline-flex items-center justify-between rounded-full bg-brand-indigoSoft px-4 py-2 text-[11px] font-semibold text-brand-white hover:brightness-110 transition"
-              >
-                Discuss your project
-                <span class="ml-2 text-base leading-none">→</span>
-              </a>
-            </article>
-
-            <!-- Card 2 -->
-            <article class="flex flex-col justify-between rounded-3xl bg-brand-navyDeep p-5 shadow-card ring-1 ring-brand-indigoSoft/40 fade-up" style="transition-delay: 0.08s">
-              <div class="space-y-3">
-                <p class="inline-flex rounded-full bg-brand-indigoSoft/25 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-white/80">
-                  Automation
-                </p>
-                <h3 class="text-sm font-semibold text-brand-white">Connected, low-friction workflows</h3>
-                <p class="text-xs leading-relaxed text-brand-white/70">
-                  n8n, Make and custom APIs to move data between forms, CRMs, payment systems and reports—without human copy-paste.
-                </p>
-              </div>
-              <a
-                href="#contact"
-                class="mt-4 inline-flex items-center justify-between rounded-full bg-brand-navyMuted px-4 py-2 text-[11px] font-semibold text-brand-white hover:bg-brand-indigoSoft transition"
-              >
-                Discuss your project
-                <span class="ml-2 text-base leading-none">→</span>
-              </a>
-            </article>
-
-            <!-- Card 3 -->
-            <article class="flex flex-col justify-between rounded-3xl bg-brand-navyDeep p-5 shadow-card ring-1 ring-brand-indigoSoft/40 fade-up" style="transition-delay: 0.16s">
-              <div class="space-y-3">
-                <p class="inline-flex rounded-full bg-brand-indigoSoft/25 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-white/80">
-                  Data & AI
-                </p>
-                <h3 class="text-sm font-semibold text-brand-white">Insightful reporting & assisted flows</h3>
-                <p class="text-xs leading-relaxed text-brand-white/70">
-                  Clean data models, dashboards and AI-assisted tools that help your team make better decisions without adding noise.
-                </p>
-              </div>
-              <a
-                href="#contact"
-                class="mt-4 inline-flex items-center justify-between rounded-full bg-brand-navyMuted px-4 py-2 text-[11px] font-semibold text-brand-white hover:bg-brand-indigoSoft transition"
-              >
-                Discuss your project
-                <span class="ml-2 text-base leading-none">→</span>
-              </a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION: RESERVIO PRODUCT -->
-      <section id="reservio" class="bg-brand-navyDeep pb-16 pt-4 md:pb-20 md:pt-6">
-        <div class="mx-auto max-w-6xl px-4 md:px-6">
-          <div class="mb-7 flex items-center justify-between gap-4">
-            <h2 class="text-xl font-semibold text-brand-white md:text-2xl">Our products</h2>
-            <p class="hidden text-xs text-brand-white/60 md:block">Software we built and shipped ourselves.</p>
-          </div>
-
-          <div class="rounded-3xl bg-gradient-to-br from-brand-indigoSoft/25 to-brand-navyMuted/50 p-8 shadow-card ring-1 ring-brand-indigoSoft/50 fade-up md:p-10">
-            <div class="grid gap-8 md:grid-cols-[1.1fr,0.9fr] md:items-center">
-
-              <div class="space-y-5">
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-green-500/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-green-400">
-                  <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400"></span>
-                  Live product
-                </span>
-                <h3 class="text-2xl font-semibold text-brand-white md:text-3xl">Reservio</h3>
-                <p class="max-w-md text-sm leading-relaxed text-brand-white/70">
-                  Booking platform built for personal trainers and their clients. Schedule sessions, manage payments, and keep everything in one frictionless flow — no spreadsheets, no back-and-forth.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                  <span class="rounded-full bg-brand-navyDeep/60 px-3 py-1 text-[11px] text-brand-white/70 ring-1 ring-brand-indigoSoft/40">Stripe payments</span>
-                  <span class="rounded-full bg-brand-navyDeep/60 px-3 py-1 text-[11px] text-brand-white/70 ring-1 ring-brand-indigoSoft/40">Real-time booking</span>
-                  <span class="rounded-full bg-brand-navyDeep/60 px-3 py-1 text-[11px] text-brand-white/70 ring-1 ring-brand-indigoSoft/40">Trainer directory</span>
-                  <span class="rounded-full bg-brand-navyDeep/60 px-3 py-1 text-[11px] text-brand-white/70 ring-1 ring-brand-indigoSoft/40">Client portal</span>
-                </div>
-                <a
-                  href="https://app.rosariodev.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Try Reservio (opens in a new tab)"
-                  class="inline-flex items-center gap-2 rounded-full bg-brand-accent px-6 py-2.5 text-xs font-semibold text-brand-white shadow-soft hover:brightness-110 transition"
-                >
-                  Try Reservio
-                  <span class="text-base leading-none">↗</span>
-                </a>
-              </div>
-
-              <div class="space-y-4 rounded-2xl bg-brand-navyDeep/70 p-6 ring-1 ring-brand-indigoSoft/30">
-                <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-white/60">How it works</p>
-                <div class="space-y-3">
-                  <div class="flex items-start gap-3">
-                    <span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-accent/20 text-[9px] text-brand-accent">✓</span>
-                    <p class="text-xs text-brand-white/75">Trainers create their profile and set availability</p>
-                  </div>
-                  <div class="flex items-start gap-3">
-                    <span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-accent/20 text-[9px] text-brand-accent">✓</span>
-                    <p class="text-xs text-brand-white/75">Clients browse, book, and pay in one step</p>
-                  </div>
-                  <div class="flex items-start gap-3">
-                    <span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-accent/20 text-[9px] text-brand-accent">✓</span>
-                    <p class="text-xs text-brand-white/75">Payments processed securely via Stripe</p>
-                  </div>
-                  <div class="flex items-start gap-3">
-                    <span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-accent/20 text-[9px] text-brand-accent">✓</span>
-                    <p class="text-xs text-brand-white/75">Both parties manage everything from one dashboard</p>
-                  </div>
-                </div>
-                <div class="border-t border-brand-indigoSoft/20 pt-3">
-                  <p class="text-[11px] text-brand-white/40">Designed for clarity, speed, and secure payments.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION: LOGOS / TRUST -->
-      <section class="bg-brand-navyDeep/98 pb-14 pt-2 md:pb-16 md:pt-2">
-        <div class="mx-auto max-w-6xl px-4 md:px-6">
-          <div class="rounded-3xl bg-brand-navyMuted/60 px-6 py-6 shadow-soft fade-up md:px-10">
-            <p class="mb-5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-white/60">
-              Tools & ecosystems RosarioDev plays well with
+          <div>
+            <p class="mb-6 text-7xl font-bold text-brand-blue" style="opacity:0.18">03</p>
+            <h3 class="mb-3 text-lg font-bold text-brand-black">Launch</h3>
+            <p class="text-sm leading-relaxed text-brand-gray">
+              We deploy, onboard your team, and document what we built. After launch, we stay available — not gone the moment we send the invoice.
             </p>
-            <div class="flex flex-wrap items-center gap-6 md:gap-10">
-              <img src="assets/logo-stripe.png"      alt="Stripe"      loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-supabase.jpeg"  alt="Supabase"    loading="lazy" decoding="async" class="h-6 w-auto grayscale rounded opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-airtable.png"   alt="Airtable"    loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-n8n.png"        alt="n8n"         loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-make.jpeg"      alt="Make"        loading="lazy" decoding="async" class="h-6 w-auto grayscale rounded opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-aws.png"        alt="AWS"         loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-powerapps.png"  alt="Power Apps"  loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-              <img src="assets/logo-flutterflow.png" alt="FlutterFlow" loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-55 transition hover:grayscale-0 hover:opacity-100" />
-            </div>
           </div>
+
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- SECTION: CONTACT -->
-      <section id="contact" class="bg-brand-navyDeep/95 pb-18 pt-6 md:pb-20 md:pt-8">
-        <div class="mx-auto max-w-6xl px-4 md:px-6">
-          <div class="grid gap-8 md:grid-cols-[0.9fr,1.1fr] md:items-center">
+    <!-- ─── PRODUCTS — blue ─── -->
+    <section id="reservio" class="relative overflow-hidden bg-brand-blue py-20 md:py-28">
+      <div class="absolute top-10 right-16 float-slow-2 opacity-15 pointer-events-none hidden md:block">
+        <div class="shape-square"></div>
+      </div>
+      <div class="absolute bottom-10 left-20 float-slow-3 opacity-10 pointer-events-none hidden md:block">
+        <div class="shape-circle"></div>
+      </div>
 
-            <div class="space-y-5 fade-up">
-              <h2 class="text-xl font-semibold text-brand-white md:text-2xl">
-                Let's design the backbone of your operations.
-              </h2>
-              <p class="text-sm leading-relaxed text-brand-white/70">
-                Send a short message explaining where things feel messy today:
-                duplicated work, manual reporting, scattered data… From there,
-                we'll map a realistic path forward.
-              </p>
-              <div class="space-y-2 text-sm text-brand-white/75">
-                <p><span class="font-semibold">Email:</span> contact@rosariodev.com</p>
-                <p><span class="font-semibold">WhatsApp Business:</span> +1 (787) 239-7182</p>
-              </div>
+      <div class="relative mx-auto max-w-6xl px-4 md:px-8">
+
+        <div class="mb-12 fade-up">
+          <p class="mb-5 text-[11px] font-bold uppercase tracking-[0.28em] text-white/45">Products</p>
+          <h2 class="text-3xl font-bold text-white md:text-5xl">
+            Software we built<br/>and shipped ourselves.
+          </h2>
+        </div>
+
+        <div class="grid gap-12 md:grid-cols-[1.15fr,0.85fr] md:items-center fade-up" style="transition-delay: 0.1s">
+
+          <div class="space-y-6">
+            <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-white/65">
+              <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400"></span>
+              Live product
+            </span>
+            <h3 class="text-5xl font-bold text-white md:text-6xl">Reservio</h3>
+            <p class="max-w-md text-base leading-relaxed text-white/65 md:text-[17px]">
+              Booking platform for personal trainers and their clients. Schedule sessions, manage payments, and keep everything in one frictionless flow — no spreadsheets, no back-and-forth.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-white/65">Stripe payments</span>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-white/65">Real-time booking</span>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-white/65">Trainer directory</span>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-white/65">Client portal</span>
             </div>
+            <a href="https://app.rosariodev.com" target="_blank" rel="noopener noreferrer"
+               aria-label="Try Reservio (opens in a new tab)"
+               class="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-bold text-brand-blue hover:bg-white/90 transition">
+              Try Reservio <span>↗</span>
+            </a>
+          </div>
 
-            <div class="fade-up" style="transition-delay: 0.1s">
-              <div class="rounded-3xl bg-brand-navyDeep p-6 shadow-card ring-1 ring-brand-indigoSoft/40">
-                <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-white/70">Project request</p>
-                <p class="mt-2 text-sm text-brand-white/80">Share your brief and we'll reply with next steps.</p>
-                <form id="project-form" class="mt-4 space-y-3">
-                  <div>
-                    <label for="full-name" class="mb-1 block text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-white/65">Full name</label>
-                    <input
-                      id="full-name"
-                      name="fullName"
-                      type="text"
-                      required
-                      class="w-full rounded-xl border border-brand-indigoSoft/40 bg-brand-navyMuted/55 px-3 py-2 text-sm text-brand-white placeholder:text-brand-white/40 focus:border-brand-accent focus:outline-none"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label for="email" class="mb-1 block text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-white/65">Email</label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      class="w-full rounded-xl border border-brand-indigoSoft/40 bg-brand-navyMuted/55 px-3 py-2 text-sm text-brand-white placeholder:text-brand-white/40 focus:border-brand-accent focus:outline-none"
-                      placeholder="you@company.com"
-                    />
-                  </div>
-                  <div>
-                    <label for="company" class="mb-1 block text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-white/65">Company (optional)</label>
-                    <input
-                      id="company"
-                      name="company"
-                      type="text"
-                      class="w-full rounded-xl border border-brand-indigoSoft/40 bg-brand-navyMuted/55 px-3 py-2 text-sm text-brand-white placeholder:text-brand-white/40 focus:border-brand-accent focus:outline-none"
-                      placeholder="Business name"
-                    />
-                  </div>
-                  <div>
-                    <label for="needs" class="mb-1 block text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-white/65">What do you need?</label>
-                    <textarea
-                      id="needs"
-                      name="needs"
-                      required
-                      rows="4"
-                      class="w-full resize-y rounded-xl border border-brand-indigoSoft/40 bg-brand-navyMuted/55 px-3 py-2 text-sm text-brand-white placeholder:text-brand-white/40 focus:border-brand-accent focus:outline-none"
-                      placeholder="Tell me about your process, pain points, and what outcome you want."
-                    ></textarea>
-                  </div>
-                  <button
-                    type="submit"
-                    class="inline-flex w-full items-center justify-center rounded-full bg-brand-accent px-4 py-2.5 text-xs font-semibold text-brand-white shadow-soft hover:brightness-110 transition"
-                  >
-                    Send project request
-                  </button>
-                </form>
-                <p class="mt-2 text-[11px] text-brand-white/55">This form opens your email app and prepares a structured message.</p>
-                <a
-                  href="https://wa.me/17872397182"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="mt-2 inline-flex w-full items-center justify-center rounded-full border border-brand-indigoSoft/70 px-4 py-2.5 text-xs font-semibold text-brand-white/85 hover:border-brand-accent hover:text-brand-accent transition"
-                >
-                  Write on WhatsApp
-                </a>
+          <div class="rounded-2xl border border-white/15 p-6 md:p-8 space-y-5">
+            <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-white/35">How it works</p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <span class="shrink-0 text-xs font-bold text-white/30">01</span>
+                <p class="text-sm text-white/75">Trainers create their profile and set availability</p>
+              </div>
+              <div class="h-px bg-white/08"></div>
+              <div class="flex items-start gap-4">
+                <span class="shrink-0 text-xs font-bold text-white/30">02</span>
+                <p class="text-sm text-white/75">Clients browse, book, and pay in one step</p>
+              </div>
+              <div class="h-px bg-white/08"></div>
+              <div class="flex items-start gap-4">
+                <span class="shrink-0 text-xs font-bold text-white/30">03</span>
+                <p class="text-sm text-white/75">Payments processed securely via Stripe</p>
+              </div>
+              <div class="h-px bg-white/08"></div>
+              <div class="flex items-start gap-4">
+                <span class="shrink-0 text-xs font-bold text-white/30">04</span>
+                <p class="text-sm text-white/75">Both parties manage everything from one dashboard</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- FOOTER -->
-      <footer class="bg-brand-navyDeep">
-        <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 border-t border-brand-navyMuted/50 px-4 py-6 text-[11px] text-brand-white/50 md:flex-row md:px-6">
-          <p>© 2026 RosarioDev. All rights reserved.</p>
-          <p>Studio for software, automation & AI.</p>
         </div>
-      </footer>
-    </div>
+      </div>
+    </section>
+
+    <!-- ─── TOOLS / TRUST — white ─── -->
+    <section class="bg-white py-16 md:py-20">
+      <div class="mx-auto max-w-6xl px-4 md:px-8">
+        <p class="mb-8 text-[11px] font-bold uppercase tracking-[0.28em] text-brand-gray fade-up">
+          Tools & ecosystems we work with
+        </p>
+        <div class="flex flex-wrap items-center gap-8 md:gap-12 fade-up" style="transition-delay: 0.1s">
+          <img src="assets/logo-stripe.png"       alt="Stripe"      loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 transition hover:grayscale-0 hover:opacity-90" />
+          <img src="assets/logo-supabase.jpeg"   alt="Supabase"    loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 rounded transition hover:grayscale-0 hover:opacity-90" />
+          <img src="assets/logo-airtable.png"    alt="Airtable"    loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 transition hover:grayscale-0 hover:opacity-90" />
+          <img src="assets/logo-n8n.png"         alt="n8n"         loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 transition hover:grayscale-0 hover:opacity-90" />
+          <img src="assets/logo-make.jpeg"       alt="Make"        loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 rounded transition hover:grayscale-0 hover:opacity-90" />
+          <img src="assets/logo-aws.png"         alt="AWS"         loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 transition hover:grayscale-0 hover:opacity-90" />
+          <img src="assets/logo-powerapps.png"   alt="Power Apps"  loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 transition hover:grayscale-0 hover:opacity-90" />
+          <img src="assets/logo-flutterflow.png" alt="FlutterFlow" loading="lazy" decoding="async" class="h-6 w-auto grayscale opacity-40 transition hover:grayscale-0 hover:opacity-90" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CONTACT — dark ─── -->
+    <section id="contact" class="bg-brand-dark py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-4 md:px-8">
+        <div class="grid gap-16 md:grid-cols-[0.85fr,1.15fr] md:items-start">
+
+          <div class="space-y-6 fade-up">
+            <p class="text-[11px] font-bold uppercase tracking-[0.28em] text-brand-gray">Contact</p>
+            <h2 class="text-3xl font-bold leading-tight text-white md:text-5xl">
+              Let's design the backbone of your operations.
+            </h2>
+            <p class="text-base leading-relaxed text-brand-gray">
+              Share where things feel messy today — duplicated work, manual reporting, scattered data. We'll map a realistic path forward.
+            </p>
+            <div class="space-y-3 pt-2">
+              <div class="flex items-center gap-4">
+                <div class="h-px w-6 bg-brand-blue shrink-0"></div>
+                <p class="text-sm text-white/65">contact@rosariodev.com</p>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="h-px w-6 bg-brand-blue shrink-0"></div>
+                <p class="text-sm text-white/65">+1 (787) 239-7182</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="fade-up" style="transition-delay: 0.12s">
+            <div class="rounded-2xl border border-white/10 p-6 md:p-8">
+              <p class="text-sm font-bold text-white">Project request</p>
+              <p class="mt-1 mb-6 text-sm text-brand-gray">Share your brief and we'll reply with next steps.</p>
+              <form id="project-form" class="space-y-4">
+                <div>
+                  <label for="full-name" class="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.14em] text-white/35">Full name</label>
+                  <input id="full-name" name="fullName" type="text" required
+                    class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/22 focus:border-brand-blue focus:outline-none transition"
+                    placeholder="Your name" />
+                </div>
+                <div>
+                  <label for="email" class="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.14em] text-white/35">Email</label>
+                  <input id="email" name="email" type="email" required
+                    class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/22 focus:border-brand-blue focus:outline-none transition"
+                    placeholder="you@company.com" />
+                </div>
+                <div>
+                  <label for="company" class="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.14em] text-white/35">Company (optional)</label>
+                  <input id="company" name="company" type="text"
+                    class="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/22 focus:border-brand-blue focus:outline-none transition"
+                    placeholder="Business name" />
+                </div>
+                <div>
+                  <label for="needs" class="mb-1.5 block text-[11px] font-bold uppercase tracking-[0.14em] text-white/35">What do you need?</label>
+                  <textarea id="needs" name="needs" required rows="4"
+                    class="w-full resize-y rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/22 focus:border-brand-blue focus:outline-none transition"
+                    placeholder="Tell me about your process, pain points, and what outcome you want."></textarea>
+                </div>
+                <button type="submit"
+                  class="w-full rounded-full bg-brand-blue py-3 text-sm font-bold text-white hover:opacity-90 transition">
+                  Send project request
+                </button>
+              </form>
+              <p class="mt-3 text-xs text-white/28">This form opens your email app with a structured message.</p>
+              <a href="https://wa.me/17872397182" target="_blank" rel="noopener noreferrer"
+                 class="mt-3 inline-flex w-full items-center justify-center rounded-full border border-white/12 py-3 text-sm font-bold text-white/50 hover:border-white/28 hover:text-white/80 transition">
+                Write on WhatsApp
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="bg-brand-black py-8">
+      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 md:flex-row md:px-8">
+        <div class="rounded-lg bg-white px-3 py-1.5">
+          <img src="assets/logo-rosariodev-horizontal.png" alt="RosarioDev" class="h-6 w-auto" />
+        </div>
+        <p class="text-xs text-white/28">© 2026 RosarioDev. Studio for software, automation & AI.</p>
+      </div>
+    </footer>
 
     <script>
-      // Hamburger menu toggle
-      const menuBtn = document.getElementById('menu-btn');
+      const menuBtn    = document.getElementById('menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
 
       menuBtn.addEventListener('click', () => {
@@ -648,11 +512,8 @@
         menuBtn.setAttribute('aria-label', 'Open menu');
       }
 
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') closeMenu();
-      });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 
-      // Scroll-triggered fade-up via IntersectionObserver
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -662,26 +523,22 @@
             }
           });
         },
-        { threshold: 0.12 }
+        { threshold: 0.1 }
       );
-
       document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
 
       const projectForm = document.getElementById('project-form');
       if (projectForm) {
-        projectForm.addEventListener('submit', (event) => {
-          event.preventDefault();
-
+        projectForm.addEventListener('submit', (e) => {
+          e.preventDefault();
           const fullName = document.getElementById('full-name').value.trim();
-          const email = document.getElementById('email').value.trim();
-          const company = document.getElementById('company').value.trim();
-          const needs = document.getElementById('needs').value.trim();
-
-          const subject = encodeURIComponent(`Project request from ${fullName}`);
-          const body = encodeURIComponent(
+          const email    = document.getElementById('email').value.trim();
+          const company  = document.getElementById('company').value.trim();
+          const needs    = document.getElementById('needs').value.trim();
+          const subject  = encodeURIComponent(`Project request from ${fullName}`);
+          const body     = encodeURIComponent(
             `Name: ${fullName}\nEmail: ${email}\nCompany: ${company || 'N/A'}\n\nProject brief:\n${needs}`
           );
-
           window.location.href = `mailto:contact@rosariodev.com?subject=${subject}&body=${body}`;
         });
       }
